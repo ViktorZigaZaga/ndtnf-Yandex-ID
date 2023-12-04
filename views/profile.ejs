@@ -1,0 +1,13 @@
+<% if (!user) { %>
+    <h3>Пожалуйста, <a href="/login">войдите в систему</a></h3>
+<% } else { %>
+    <h3>Привет, <%= user.name.familyName %>. <a href="/logout">Выход</a></h3>
+    <p><strong>Фамилия: </strong> <%= user.name.givenName %></p>
+    <p><strong>Имя: </strong> <%= user.name.familyName %></p>
+    <p><strong>Email: </strong> <%= user.emails.map(email => email.value).join(', ') %></p>
+    <p>
+        <% for(var i = 0; i < user.photos.length; i++) { %>
+            <img style="max-width: 200px" src="<%= user.photos[i].value %>" alt="Фото">
+        <% } %>
+    </p>
+<% } %>
